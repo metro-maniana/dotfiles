@@ -1,40 +1,29 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode disabled  # disable automatic updates
-
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use)
-
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:$HOME/.local/bin
-
 export PATH="$HOME/.pixi/bin:$PATH"
 
-# Setup EDITOR for local or ssh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
 
-chpwd() {
-    ls
-}
-
 alias -s json="jless"
 alias -s py="$EDITOR"
 alias -s python="python3"
+
+chpwd() {
+    ls
+}
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
